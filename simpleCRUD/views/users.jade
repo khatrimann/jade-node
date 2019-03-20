@@ -4,7 +4,7 @@ block content
     .container
         .row
             .col
-                form(method='post', action='/localhost:3000/users')
+                form(method='post')
                     .form-row
                         .form-group.col-md-6
                             label(for='firstName') First Name
@@ -37,8 +37,9 @@ block content
                     .form-check
                         input#no.form-check-input(type='radio', name='agree', value='false')
                         label.form-check-label(for='no') No
-                    button.btn.btn-primary(type='submit') Submit
+                    button.btn.btn-primary(type='submit', href='/users') Submit
             .col
                 ul
                 each val, index in users
-                    li= val.firstName
+                    a(href= 'users/'+val._id)
+                        li= val.firstName + ' ' + val.lastName + ' (' + val.email + ')'
