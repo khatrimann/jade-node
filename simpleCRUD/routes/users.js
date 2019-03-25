@@ -33,9 +33,9 @@ router.post('/', (req, res, next) => {
   console.log(req.body.dob);
   req.body.dob = new Date(req.body.dob);
   console.log(req.body);
-  User.find({email: req.body.email})
+  User.findOne({email: req.body.email})
   .then((user) => {
-    if (user!=null) {
+    if (user==null) {
       User.create(req.body)
       .then((user) => {
           res.statusCode = 200;
